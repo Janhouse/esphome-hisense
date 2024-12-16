@@ -1,6 +1,12 @@
+#pragma once
+
 #include <vector>
 #include "esphome.h"
 #include "esphome/components/sensor/sensor.h"
+
+
+namespace esphome {
+namespace hisense {
 
 #pragma pack(1)
 typedef struct _Device_Status
@@ -395,21 +401,11 @@ uint8_t temp_to_C_reset_temp[] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x01, 0xF0, 0xF4, 0xFB};
 
-class AirconClimate : public PollingComponent, public Climate, public UARTDevice
+class HisenseClimate : public PollingComponent, public Climate, public UARTDevice
 {
 public:
-    AirconClimate(UARTComponent *parent) : PollingComponent(2000),
-                                           UARTDevice(parent),
-                                           compressor_frequency(),
-                                           compressor_frequency_setting(),
-                                           compressor_frequency_send(),
-                                           outdoor_temperature(),
-                                           outdoor_condenser_temperature(),
-                                           compressor_exhaust_temperature(),
-                                           target_exhaust_temperature(),
-                                           indoor_pipe_temperature(),
-                                           indoor_humidity_setting(),
-                                           indoor_humidity_status() {}
+    // HisenseClimate(UARTComponent *parent) : PollingComponent(2000),
+    //                                        UARTDevice(parent) {}
 
     void setup() override
     {
@@ -899,16 +895,23 @@ private:
             arr[i] = request[i];
         }
 
-        send_command(arr, sizeof(arr));
+        send(arr);
 
+    }
+
+    void send(uint8_t cmd[]){
+        send_command(cmd, sizeof(cmd));
     }
 
     void set_temp(int temp)
     {
         temp_cmd(temp);
-        
     }
 
     uint8_t int_buf[256];
     // Device_Status dev_stat;
 };
+
+
+}  // namespace anova
+}  // namespace esphome
