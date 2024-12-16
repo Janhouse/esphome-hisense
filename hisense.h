@@ -24,12 +24,12 @@ typedef struct _Device_Status
     // 4
     uint8_t indoor_temperature_setting;
     uint8_t indoor_temperature_status;
-    uint8_t indoor_pipe_temperature;
+    int8_t indoor_pipe_temperature;
     // 7
     uint8_t indoor_humidity_setting;
     uint8_t indoor_humidity_status;
 
-    uint8_t somatosensory_temperature; // sensible temperature
+    int8_t somatosensory_temperature; // sensible temperature
     // 10
     uint8_t somatosensory_compensation_ctrl : 3;
     uint8_t somatosensory_compensation : 5;
@@ -126,13 +126,13 @@ typedef struct _Device_Status
     // 28
     uint8_t compressor_frequency_send;
     // 29
-    uint8_t outdoor_temperature;
+    int8_t outdoor_temperature;
     // 30
-    uint8_t outdoor_condenser_temperature;
+    int8_t outdoor_condenser_temperature;
     // 31
-    uint8_t compressor_exhaust_temperature;
+    int8_t compressor_exhaust_temperature;
     // 32
-    uint8_t target_exhaust_temperature;
+    int8_t target_exhaust_temperature;
     // 33
     uint8_t expand_threshold;
     // 34
