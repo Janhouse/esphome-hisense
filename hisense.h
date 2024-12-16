@@ -556,11 +556,11 @@ public:
             set_sensor(compressor_frequency, ((Device_Status*)int_buf)->compressor_frequency);
             set_sensor(compressor_frequency_setting, ((Device_Status*)int_buf)->compressor_frequency_setting);
             set_sensor(compressor_frequency_send, ((Device_Status*)int_buf)->compressor_frequency_send);
-            set_sensor(outdoor_temperature, ((Device_Status*)int_buf)->outdoor_temperature);
-            set_sensor(outdoor_condenser_temperature, ((Device_Status*)int_buf)->outdoor_condenser_temperature);
-            set_sensor(compressor_exhaust_temperature, ((Device_Status*)int_buf)->compressor_exhaust_temperature);
-            set_sensor(target_exhaust_temperature, ((Device_Status*)int_buf)->target_exhaust_temperature);
-            set_sensor(indoor_pipe_temperature, ((Device_Status*)int_buf)->indoor_pipe_temperature);
+            set_sensor(outdoor_temperature, (float)((Device_Status*)int_buf)->outdoor_temperature);
+            set_sensor(outdoor_condenser_temperature, (float)((Device_Status*)int_buf)->outdoor_condenser_temperature);
+            set_sensor(compressor_exhaust_temperature, (float)((Device_Status*)int_buf)->compressor_exhaust_temperature);
+            set_sensor(target_exhaust_temperature, (float)((Device_Status*)int_buf)->target_exhaust_temperature);
+            set_sensor(indoor_pipe_temperature, (float)((Device_Status*)int_buf)->indoor_pipe_temperature);
             set_sensor(indoor_humidity_setting, ((Device_Status*)int_buf)->indoor_humidity_setting);
             set_sensor(indoor_humidity_status, ((Device_Status*)int_buf)->indoor_humidity_status);
 
